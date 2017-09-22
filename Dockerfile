@@ -1,11 +1,9 @@
 FROM  fedora:latest
 
-RUN dnf -y update && dnf install wget tar git sqlite sqlite-devel -y
-RUN wget https://bootstrap.pypa.io/get-pip.py
-CMD ["python","get-pip.py"]
-CMD ["pip","sqlite3"]
+RUN dnf update -y && dnf install wget tar -y
 
 WORKDIR /home/fedora/wrk
 COPY Chinook_Sqlite.sqlite /home/fedora/wrk
 COPY db.py /home/fedora/wrk
-CMD ["python3.5","db.py"]
+
+CMD ["python3","db.py"]
