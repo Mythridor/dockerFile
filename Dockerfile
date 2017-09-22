@@ -3,6 +3,7 @@ FROM  fedora:latest
 
 RUN dnf -y update && dnf install wget tar git -y
 
+
 WORKDIR /home/fedora/wrk
 # installer wget tar git
 # Copier la base de donnees sqlite Chinook_Sqlite.sqlite
