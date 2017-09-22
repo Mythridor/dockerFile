@@ -1,5 +1,3 @@
-#! /usr/local/bin/python3.5
-
 import sqlite3
 
 db = sqlite3.connect("../Chinook_Sqlite.sqlite")
