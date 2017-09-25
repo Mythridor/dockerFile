@@ -1,11 +1,13 @@
 FROM fedora:latest
 
-RUN git clone https://github.com/Mythridor/json-server.git
-RUN dnf update -y && wget https://bootstrap.pypa.io/get-pip.py
-CMD ["python3", "get-pip.py"]
+RUN dnf update -y && dnf install git wget -y  && wget https://bootstrap.pypa.io/get-pip.py
+RUN git clone https://github.com/Mythridor/json-server.git json
 
-WORKDIR /home/fedora/wrk
-COPY ./json-server/* /home/fedora/wrk
+RUN pwd
+
+WORKDIR /wrk
+RUN cp -r /json /wrk
 EXPOSE 5000
 
-CMD ["pip3", "install Flask"]
+RUN pip3 install flask flask-script
+CMD ["python3", "/wrk/json/json-server.py", "runserver"]
